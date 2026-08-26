@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+:root {
+	--ink: #f3ede2;
+	--muted: #a9a096;
+	--line: rgba(243, 237, 226, 0.14);
+	--paper: #171716;
+	--warm: #d9a45b;
+	--deep: #0d0e0d;
+	font-family: 'DM Mono', monospace;
+	color: var(--ink);
+	background: var(--deep);
+}
+
+* { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	min-width: 320px;
+	background: var(--deep);
+}
+
+button, input { font: inherit; }
+
+.app-shell {
+	min-height: 100vh;
+	overflow: hidden;
+	background: radial-gradient(circle at 78% 2%, rgba(217, 164, 91, 0.13), transparent 30rem), var(--deep);
+}
+
+.hero, .results { max-width: 1180px; margin: 0 auto; padding-inline: 7vw; }
+
+.hero { padding-top: 52px; padding-bottom: 84px; position: relative; }
+.hero::after {
+	position: absolute;
+	top: 55px;
+	right: 7vw;
+	color: var(--muted);
+	font-size: 11px;
+	letter-spacing: 1px;
+}
+
+.brand-mark {
+	display: grid;
+	width: 38px;
+	height: 38px;
+	margin-bottom: 56px;
+	place-items: center;
+	color: var(--deep);
+	background: var(--warm);
+	font-family: 'Playfair Display', serif;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.eyebrow { margin: 0 0 14px; color: var(--warm); font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 720px; margin-bottom: 24px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3.8rem, 8vw, 7.8rem); font-weight: 500; line-height: .9; letter-spacing: 0; }
+h1 em { color: var(--warm); font-weight: 500; }
+.intro { max-width: 390px; margin-bottom: 52px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+.search-bar { max-width: 660px; padding-top: 18px; border-top: 1px solid var(--line); }
+.search-bar label { display: block; margin-bottom: 12px; color: var(--muted); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.search-controls { display: flex; gap: 10px; }
+.search-controls input { width: 100%; min-width: 0; padding: 15px 0; border: 0; border-bottom: 1px solid var(--muted); outline: 0; color: var(--ink); background: transparent; font-size: 16px; }
+.search-controls input:focus { border-color: var(--warm); }
+.search-controls button { padding: 0 24px; border: 1px solid var(--warm); color: var(--deep); background: var(--warm); cursor: pointer; font-size: 12px; font-weight: 500; transition: background .2s, color .2s; }
+.search-controls button:hover { color: var(--warm); background: transparent; }
+.search-controls button:disabled { cursor: wait; opacity: .6; }
+
+.results { padding-top: 28px; padding-bottom: 80px; border-top: 1px solid var(--line); }
+.section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 30px; }
+.section-heading h2 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 500; }
+.result-count { color: var(--warm); font-size: 28px; }
+.feedback { margin: 0 0 24px; color: var(--muted); font-size: 12px; }
+.movie-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 16px; }
+.movie-card { min-width: 0; animation: reveal .5s ease both; }
+.poster-wrap { position: relative; aspect-ratio: 2 / 3; overflow: hidden; background: var(--paper); }
+.poster-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .5s ease; }
+.movie-card:hover .poster-wrap img { transform: scale(1.04); }
+.poster-wrap span { position: absolute; inset: 0; display: grid; place-items: center; padding: 20px; color: var(--muted); font-size: 11px; text-align: center; }
+.movie-info { padding-top: 12px; }
+.movie-info h3 { margin-bottom: 6px; overflow: hidden; color: var(--ink); font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.movie-info p { margin: 0; color: var(--muted); font-size: 10px; text-transform: uppercase; }
+.movie-info span { padding: 0 5px; color: var(--warm); }
+
+@keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 700px) {
+	.hero, .results { padding-inline: 24px; }
+	.hero { padding-top: 28px; padding-bottom: 58px; }
+	.hero::after { top: 31px; right: 24px; }
+	.brand-mark { margin-bottom: 42px; }
+	h1 { font-size: clamp(3.2rem, 16vw, 5.5rem); }
+	.search-controls { display: grid; grid-template-columns: 1fr; gap: 14px; }
+	.search-controls button { min-height: 48px; }
+	.results { padding-top: 24px; }
+	.movie-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 12px; }
+}
